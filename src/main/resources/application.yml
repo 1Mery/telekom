@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: telekom-service
+
+  # PostgreSQL
+  datasource:
+    url: jdbc:postgresql://localhost:5432/telekom_db
+    username: postgres
+    password: password123
+    driver-class-name: org.postgresql.Driver
+
+  # JPA
+  jpa:
+    hibernate:
+      ddl-auto: create # Entity sınıflarımıza göre tabloları otomatik günceller/oluşturur
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # Redis
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+server:
+  port: 8080
