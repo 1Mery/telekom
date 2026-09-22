@@ -20,6 +20,10 @@ public class ProductBarcode {
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "accessory_id")
+    private Accessory accessory;
+
     @Column(nullable = false, unique = true, length = 100)
     private String barcode;
 }
