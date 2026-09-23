@@ -20,7 +20,6 @@ public class ReportingService {
     private final DailyTransactionRepository transactionRepository;
     private final ZReportRepository zReportRepository;
 
-    // 1. GÜN SONU ALMA VE RAPORU KAYDETME
     @Transactional
     public ZReportResponseDto closeDayAndGenerateReport() {
         List<DailyTransaction> openTransactions = transactionRepository.findByStatus("OPEN");
@@ -63,7 +62,6 @@ public class ReportingService {
                 .build();
     }
 
-    // 2. BELİRLİ BİR TARİHİN Z-RAPORUNU GETİRME (Geçmiş Gün Sorgulama)
     @Transactional(readOnly = true)
     public ZReportResponseDto getReportByDate(LocalDate date) {
         ZReport zReport = zReportRepository.findByReportDate(date)

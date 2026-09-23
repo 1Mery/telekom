@@ -19,11 +19,7 @@ public class DailyTransaction {
     private Long id;
 
     @Column(name = "transaction_type", nullable = false, length = 20)
-    private String transactionType; // 'PRODUCT', 'ACCESSORY', 'SERVICE'
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private Product product;
+    private String transactionType; // 'ACCESSORY', 'SERVICE'
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "accessory_id")

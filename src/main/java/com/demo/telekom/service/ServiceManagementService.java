@@ -18,10 +18,20 @@ public class ServiceManagementService {
     private final ServiceRepository serviceRepository;
     private final DailyTransactionRepository transactionRepository;
 
-    // Ana ekranda gösterilecek aktif hizmet listesi (Faturalı Hat, Faturasız Hat vb.)
+    // Ana ekranda gösterilecek aktif hizmet listesi
     @Transactional(readOnly = true)
     public List<ServiceEntity> getAllActiveServices() {
         return serviceRepository.findByActiveTrue();
+    }
+
+    @Transactional
+    public ServiceEntity createService(String name) {
+        ServiceEntity newService = ServiceEntity.builder()
+                .name(name)
+                .active(true)
+                .build();
+
+        return serviceRepository.save(newService);
     }
 
     // Ekrandan tıklandığında hizmet satışını gerçekleştiren ve kasaya işleyen metot
